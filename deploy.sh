@@ -41,9 +41,4 @@ awslocal lambda add-permission \
 # Uses s3:ObjectCreated:* to trigger on any upload
 awslocal s3api put-bucket-notification-configuration \
   --bucket my-upload-bucket \
-  --notification-configuration '{
-    "LambdaFunctionConfigurations": [{
-      "LambdaFunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:imageResizer",
-      "Events": ["s3:ObjectCreated:*"]
-    }]
-  }'
+  --notification-configuration file://notification-config.json
